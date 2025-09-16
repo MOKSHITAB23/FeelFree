@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeelFree - Mental Health Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-item {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .nav-item.active {
+            background-color: #e8f5e8;
+            color: #2d5a2d;
+        }
+
+        .signup-btn {
+            background-color: #333;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .signup-btn:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+
+        .signup-btn.active {
+            background-color: #2d5a2d;
+            transform: scale(0.95);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FBC3BC, #F7A399);
+            padding: 60px 40px 60px 200px;
+            border-radius: 30px;
+            margin: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 500px;
+        }
+
+        .hero::before {
+            content: '★';
+            position: absolute;
+            color: rgba(255,255,255,0.3);
+            font-size: 30px;
+            top: 80px;
+            right: 150px;
+            animation: twinkle 3s infinite;
+        }
+
+        .hero::after {
+            content: '★';
+            position: absolute;
+            color: rgba(255,255,255,0.3);
+            font-size: 20px;
+            bottom: 100px;
+            right: 80px;
+            animation: twinkle 4s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .hero-title .highlight {
+            background-color: #EF6351;
+            padding: 5px 15px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 300px;
+        }
+
+        .hero-btn {
+            padding: 18px 30px;
+            border-radius: 25px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .lets-talk-btn {
+            background-color: #EF6351;
+            color: white;
+        }
+
+        .lets-talk-btn:hover {
+            background-color: #e54d3a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(239, 99, 81, 0.3);
+        }
+
+        .lets-talk-btn.active {
+            background-color: #d43e2a;
+            transform: scale(0.95);
+        }
+
+        .journal-btn {
+            background-color: #F7A399;
+            color: white;
+        }
+
+        .journal-btn:hover {
+            background-color: #f59088;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(247, 163, 153, 0.3);
+        }
+
+        .journal-btn.active {
+            background-color: #f37d77;
+            transform: scale(0.95);
+        }
+
+        .hero-space {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 300px;
+        }
+
+        /* Footer Section */
+        .footer {
+            background: linear-gradient(135deg, #FBC3BC, #F7A399);
+            padding: 40px;
+            text-align: center;
+            margin: 30px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '★';
+            position: absolute;
+            color: rgba(255,255,255,0.3);
+            font-size: 25px;
+            top: 20px;
+            left: 50px;
+            animation: twinkle 2s infinite;
+        }
+
+        .footer::after {
+            content: '★';
+            position: absolute;
+            color: rgba(255,255,255,0.3);
+            font-size: 30px;
+            top: 20px;
+            right: 100px;
+            animation: twinkle 3.5s infinite;
+        }
+
+        .footer-message {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav {
+                gap: 15px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                margin: 20px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                max-width: 100%;
+            }
+
+            .hero-space {
+                margin-top: 30px;
+            }
+
+            .footer {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+
+            .footer-message {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">F</div>
+            FeelFree
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-item" data-nav="home">Home</a>
+            <a href="ChatBot.html" class="nav-item" data-nav="lets-talk">Lets Talk</a>
+            <a href="journal.html" class="nav-item" data-nav="journal">Journal</a>
+            <a href="contact.html" class="nav-item" data-nav="contact">Contact</a>
+            <button class="signup-btn">SIGN UP</button>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Every thought has a voice. Every <span class="highlight">feeling deserves a home.</span>
+            </h1>
+            <div class="hero-buttons">
+                <a href="ChatBot.html" class="hero-btn lets-talk-btn">LETS TALK</a>
+                <a href="journal.html" class="hero-btn journal-btn">JOURNAL NOW</a>
+            </div>
+        </div>
+        <div class="hero-space">
+            <!-- Space for your sticker -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-message">
+            Breathe. This moment is yours, and you're doing the best you can.
+        </p>
+    </footer>
+
+    <script>
+        // Navigation toggle functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all nav items
+                navItems.forEach(nav => nav.classList.remove('active'));
+                // Add active class to clicked item
+                this.classList.add('active');
+            });
+        });
+
+        // Sign up button toggle
+        const signupBtn = document.querySelector('.signup-btn');
+        signupBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            setTimeout(() => {
+                this.classList.remove('active');
+            }, 200);
+        });
+
+        // Hero buttons toggle functionality
+        const letsTalkBtn = document.querySelector('.lets-talk-btn');
+        const journalBtn = document.querySelector('.journal-btn');
+
+        letsTalkBtn.addEventListener('click', function() {
+            this.classList.add('active');
+            setTimeout(() => {
+                this.classList.remove('active');
+            }, 200);
+        });
+
+        journalBtn.addEventListener('click', function() {
+            this.classList.add('active');
+            setTimeout(() => {
+                this.classList.remove('active');
+            }, 200);
+        });
+
+        // Add some interactive animations
+        const heroSpace = document.querySelector('.hero-space');
+        heroSpace.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+
+        heroSpace.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+
+        // Add floating animation to stars
+        const style = document.createElement('style');
+        style.textContent = `
+            .hero::before, .hero::after, .footer::before, .footer::after {
+                animation: float 6s ease-in-out infinite;
+            }
+            
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
