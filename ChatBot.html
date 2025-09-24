@@ -1,428 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FeelFree - Your Safe Space to Chat</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+      }
 
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
+      body {
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
 
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 100;
-            border-bottom: 1px solid rgba(239, 99, 81, 0.1);
-            margin-bottom: 30px;
-        }
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 100;
+        border-bottom: 1px solid rgba(239, 99, 81, 0.1);
+        margin-bottom: 30px;
+      }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: 700;
-            color: #333;
-        }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+      }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #ff6b6b, #feca57);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+      }
 
-        .nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
+      .nav {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+      }
 
-        .nav-item {
-            color: #666;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+      .nav-item {
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
 
-        .nav-item:hover {
-            background-color: #f0f0f0;
-            color: #333;
-        }
+      .nav-item:hover {
+        background-color: #f0f0f0;
+        color: #333;
+      }
 
-        .nav-item.active {
-            background-color: #e8f5e8;
-            color: #2d5a2d;
-        }
+      .nav-item.active {
+        background-color: #e8f5e8;
+        color: #2d5a2d;
+      }
 
-        .signup-btn {
-            background-color: #333;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
+      .signup-btn {
+        background-color: #333;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
 
-        .signup-btn:hover {
-            background-color: #555;
-            transform: translateY(-2px);
-        }
+      .signup-btn:hover {
+        background-color: #555;
+        transform: translateY(-2px);
+      }
 
-        .signup-btn.active {
-            background-color: #2d5a2d;
-            transform: scale(0.95);
-        }
+      .signup-btn.active {
+        background-color: #2d5a2d;
+        transform: scale(0.95);
+      }
 
+      /* Main Content */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        gap: 30px;
+      }
 
-        /* Main Content */
+      /* Chat Container */
+      .chat-container {
+        flex: 2;
+        background-color: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-header {
+        margin-bottom: 30px;
+      }
+
+      .chat-header h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .chat-header h2 {
+        font-size: 18px;
+        color: #666;
+        font-weight: 500;
+      }
+
+      /* Messages */
+      .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 30px;
+        padding-right: 10px;
+      }
+
+      .message {
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      .message.user {
+        justify-content: flex-end;
+      }
+
+      .message.bot {
+        justify-content: flex-start;
+      }
+
+      .message-bubble {
+        max-width: 70%;
+        padding: 16px 24px;
+        border-radius: 24px;
+        font-size: 16px;
+        line-height: 1.5;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .user-bubble {
+        background: linear-gradient(135deg, #f4a09c, #e54d3a);
+        color: white;
+        border-bottom-right-radius: 8px;
+      }
+
+      .bot-bubble {
+        background: #f0f0f0;
+        color: #333;
+        border-bottom-left-radius: 8px;
+      }
+
+      /* Input Area */
+      .input-container {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .message-input {
+        flex: 1;
+        padding: 16px 24px;
+        border: 2px solid #e0e0e0;
+        border-radius: 30px;
+        font-size: 16px;
+        outline: none;
+        transition: all 0.3s ease;
+        background-color: white;
+      }
+
+      .message-input:focus {
+        border-color: #f4a09c;
+        box-shadow: 0 0 0 4px rgba(244, 160, 156, 0.1);
+      }
+
+      .send-button {
+        width: 55px;
+        height: 55px;
+        background: linear-gradient(135deg, #f4a09c, #e54d3a);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(244, 160, 156, 0.3);
+      }
+
+      .send-button:hover {
+        transform: scale(1.05);
+      }
+
+      /* Sidebar */
+      .sidebar {
+        flex: 1;
+        background-color: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 30px;
+        order: -1; /* This moves the sidebar to the left */
+      }
+
+      .sidebar-section {
+        margin-bottom: 30px;
+      }
+
+      .sidebar-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .conversation-item,
+      .starter-item {
+        display: block;
+        width: 100%;
+        padding: 14px 20px;
+        margin-bottom: 12px;
+        background-color: #f8f9fa;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        text-align: left;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .conversation-item:hover,
+      .starter-item:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+      }
+
+      .conversation-item.active {
+        background: linear-gradient(135deg, #f4a09c, #e54d3a);
+        color: white;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 30px;
+          flex-direction: column;
         }
 
-        /* Chat Container */
-        .chat-container {
-            flex: 2;
-            background-color: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-header {
-            margin-bottom: 30px;
-        }
-
-        .chat-header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .chat-header h2 {
-            font-size: 18px;
-            color: #666;
-            font-weight: 500;
-        }
-
-        /* Messages */
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            margin-bottom: 30px;
-            padding-right: 10px;
-        }
-
-        .message {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .message.user {
-            justify-content: flex-end;
-        }
-
-        .message.bot {
-            justify-content: flex-start;
+        .sidebar {
+          order: 0;
+          margin-bottom: 30px;
         }
 
         .message-bubble {
-            max-width: 70%;
-            padding: 16px 24px;
-            border-radius: 24px;
-            font-size: 16px;
-            line-height: 1.5;
-            position: relative;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+          max-width: 85%;
         }
-
-        .user-bubble {
-            background: linear-gradient(135deg, #f4a09c, #e54d3a);
-            color: white;
-            border-bottom-right-radius: 8px;
-        }
-
-        .bot-bubble {
-            background: #f0f0f0;
-            color: #333;
-            border-bottom-left-radius: 8px;
-        }
-
-        /* Input Area */
-        .input-container {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .message-input {
-            flex: 1;
-            padding: 16px 24px;
-            border: 2px solid #e0e0e0;
-            border-radius: 30px;
-            font-size: 16px;
-            outline: none;
-            transition: all 0.3s ease;
-            background-color: white;
-        }
-
-        .message-input:focus {
-            border-color: #f4a09c;
-            box-shadow: 0 0 0 4px rgba(244, 160, 156, 0.1);
-        }
-
-        .send-button {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #f4a09c, #e54d3a);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(244, 160, 156, 0.3);
-        }
-
-        .send-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* Sidebar */
-        .sidebar {
-            flex: 1;
-            background-color: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            padding: 30px;
-            order: -1; /* This moves the sidebar to the left */
-        }
-
-        .sidebar-section {
-            margin-bottom: 30px;
-        }
-
-        .sidebar-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .conversation-item, .starter-item {
-            display: block;
-            width: 100%;
-            padding: 14px 20px;
-            margin-bottom: 12px;
-            background-color: #f8f9fa;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .conversation-item:hover, .starter-item:hover {
-            background-color: #f0f0f0;
-            transform: translateX(5px);
-        }
-
-        .conversation-item.active {
-            background: linear-gradient(135deg, #f4a09c, #e54d3a);
-            color: white;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                order: 0;
-                margin-bottom: 30px;
-            }
-            
-            .message-bubble {
-                max-width: 85%;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
-        <div class="logo">
-            <div class="logo-icon">F</div>
-            FeelFree
-        </div>
-        <nav class="nav">
-            <a href="index.html" class="nav-item" data-nav="home">Home</a>
-            <a href="ChatBot.html" class="nav-item active" data-nav="lets-talk">Lets Talk</a>
-            <a href="journal.html" class="nav-item" data-nav="journal">Journal</a>
-            <a href="contact.html" class="nav-item" data-nav="community">Community</a>
-            <a href="#" class="signup-btn">SIGN UP</a>
-        </nav>
+      <div class="logo">
+        <div class="logo-icon">F</div>
+        FeelFree
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-item" data-nav="home">Home</a>
+        <a href="ChatBot.html" class="nav-item active" data-nav="lets-talk"
+          >Lets Talk</a
+        >
+        <a href="journal.html" class="nav-item" data-nav="journal">Journal</a>
+        <a href="contact.html" class="nav-item" data-nav="community"
+          >Community</a
+        >
+        <a href="#" class="signup-btn">SIGN UP</a>
+      </nav>
     </header>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">RECENT CONVERSATIONS</h3>
-                <button class="conversation-item active">Today's Chat</button>
-                <button class="conversation-item">Yesterday's Chat</button>
-                <button class="conversation-item">July 20th Chat</button>
-            </div>
-
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">QUICK STARTERS</h3>
-                <button class="starter-item" data-message="How are you feeling?">How are you feeling?</button>
-                <button class="starter-item" data-message="Tell me about your day">Tell me about your day</button>
-                <button class="starter-item" data-message="I need someone to listen">I need someone to listen</button>
-                <button class="starter-item" data-message="Help me process my thoughts">Help me process my thoughts</button>
-            </div>
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">RECENT CONVERSATIONS</h3>
+          <button class="conversation-item active">Today's Chat</button>
+          <!--   <button class="conversation-item">Yesterday's Chat</button> -->
+          <!-- <button class="conversation-item">July 20th Chat</button> -->
         </div>
 
-        <!-- Chat Container -->
-        <div class="chat-container">
-            <div class="chat-header">
-                <h1>Write Your Mind</h1>
-                <h2>TODAY'S CHAT • Tuesday, Jul 22, 2025</h2>
-            </div>
-
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot">
-                    <div class="message-bubble bot-bubble">
-                        Take a moment to pause and think. What emotion stands out most to you right now—is it joy, sadness, anxiety, calmness, or something else?
-                    </div>
-                </div>
-            </div>
-
-            <div class="input-container">
-                <input type="text" class="message-input" placeholder="Start writing your thoughts here..." id="messageInput">
-                <button class="send-button" id="sendButton">▶</button>
-            </div>
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">QUICK STARTERS</h3>
+          <button class="starter-item" data-message="I feel anxious?">
+            How are you feeling?
+          </button>
+          <button class="starter-item" data-message="What should I do">
+            Tell me about your day
+          </button>
+          <button class="starter-item" data-message="I need someone to listen">
+            I need someone to listen
+          </button>
+          <button
+            class="starter-item"
+            data-message="Help me process my thoughts"
+          >
+            Help me process my thoughts
+          </button>
         </div>
+      </div>
+
+      <!-- Chat Container -->
+      <div class="chat-container">
+        <div class="chat-header">
+          <h1>Write Your Mind</h1>
+          <h2>TODAY'S CHAT • Tuesday, Jul 22, 2025</h2>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot">
+            <div class="message-bubble bot-bubble">
+              Take a moment to pause and think. What emotion stands out most to
+              you right now—is it joy, sadness, anxiety, calmness, or something
+              else?
+            </div>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <input
+            type="text"
+            class="message-input"
+            placeholder="Start writing your thoughts here..."
+            id="messageInput"
+          />
+          <button class="send-button" id="sendButton">▶</button>
+        </div>
+      </div>
     </div>
 
     <script>
-        const chatMessages = document.getElementById('chatMessages');
-        const messageInput = document.getElementById('messageInput');
-        const sendButton = document.getElementById('sendButton');
-        const conversationItems = document.querySelectorAll('.conversation-item');
-        const starterItems = document.querySelectorAll('.starter-item');
+      const chatMessages = document.getElementById("chatMessages");
+      const messageInput = document.getElementById("messageInput");
+      const sendButton = document.getElementById("sendButton");
+      const conversationItems = document.querySelectorAll(".conversation-item");
+      const starterItems = document.querySelectorAll(".starter-item");
 
-        // Bot responses
-        const botResponses = [
-            "I'm here to listen. Please tell me more about how you're feeling.",
-            "That sounds really challenging. You're being so brave by sharing this with me.",
-            "I can hear that this is important to you. What would help you most right now?",
-            "Thank you for trusting me with your thoughts. How are you taking care of yourself?",
-            "It's completely normal to feel this way. What usually helps you when you're going through something like this?",
-            "I'm glad you reached out. Sometimes just talking about things can help us process them better.",
-            "You're not alone in feeling this way. What's one small thing that might bring you some comfort right now?"
-        ];
+      // Bot responses
+      const botResponses = [
+        "I'm here to listen. Please tell me more about how you're feeling.",
+        "That sounds really challenging. You're being so brave by sharing this with me.",
+        "I can hear that this is important to you. What would help you most right now?",
+        "Thank you for trusting me with your thoughts. How are you taking care of yourself?",
+        "It's completely normal to feel this way. What usually helps you when you're going through something like this?",
+        "I'm glad you reached out. Sometimes just talking about things can help us process them better.",
+        "You're not alone in feeling this way. What's one small thing that might bring you some comfort right now?",
+      ];
 
-        function addMessage(content, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+      function addMessage(content, isUser = false) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${isUser ? "user" : "bot"}`;
 
-            const bubble = document.createElement('div');
-            bubble.className = `message-bubble ${isUser ? 'user-bubble' : 'bot-bubble'}`;
-            bubble.textContent = content;
+        const bubble = document.createElement("div");
+        bubble.className = `message-bubble ${
+          isUser ? "user-bubble" : "bot-bubble"
+        }`;
+        bubble.textContent = content;
 
-            messageDiv.appendChild(bubble);
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
+        messageDiv.appendChild(bubble);
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
 
-        function sendMessage() {
-            const message = messageInput.value.trim();
-            if (message) {
-                addMessage(message, true);
-                messageInput.value = '';
+      function sendMessage() {
+        const imessage = messageInput.value.trim();
+        if (!imessage) return; // prevent sending empty messages
 
-                // Simulate bot response after a delay
-                setTimeout(() => {
-                    const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
-                    addMessage(randomResponse, false);
-                }, 1000 + Math.random() * 1000);
+        // show user message immediately
+        addMessage(imessage, true);
+
+        fetch("http://127.0.0.1:8000/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: imessage,
+          }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
             }
-        }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Response from backend:", data);
 
-        // Send button functionality
-        sendButton.addEventListener('click', sendMessage);
-
-        // Enter key functionality
-        messageInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
+            // if backend returns JSON like {reply: "..."}
+            if (data.message) {
+              addMessage(data.message, false);
             }
-        });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            addMessage("⚠️ Failed to connect to server.", false);
+          });
 
-        // Conversation items toggle
-        conversationItems.forEach(item => {
-            item.addEventListener('click', function() {
-                conversationItems.forEach(conv => conv.classList.remove('active'));
-                this.classList.add('active');
-                chatMessages.innerHTML = `
+        // clear input field
+        messageInput.value = "";
+      }
+
+      // Send button functionality
+      sendButton.addEventListener("click", sendMessage);
+
+      // Enter key functionality
+      messageInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
+      });
+
+      // Conversation items toggle
+      conversationItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          conversationItems.forEach((conv) => conv.classList.remove("active"));
+          this.classList.add("active");
+          chatMessages.innerHTML = `
                     <div class="message bot">
                         <div class="message-bubble bot-bubble">
                             Continuing our conversation. How have you been feeling since we last talked?
                         </div>
                     </div>
                 `;
-            });
         });
+      });
 
-        // Starter items functionality
-        starterItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const message = this.getAttribute('data-message');
-                messageInput.value = message;
-                sendMessage();
-            });
+      // Starter items functionality
+      starterItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          const message = this.getAttribute("data-message");
+          messageInput.value = message;
+          sendMessage();
         });
+      });
     </script>
-</body>
+  </body>
 </html>

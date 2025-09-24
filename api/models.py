@@ -7,3 +7,9 @@ class userCreate(BaseModel):
 class userOut(BaseModel):
     id:str
     username: str
+
+class Message(BaseModel):
+    message:str
+
+class MessageOut(BaseModel):
+    message:str
